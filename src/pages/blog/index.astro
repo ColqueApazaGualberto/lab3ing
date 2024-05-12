@@ -1,0 +1,24 @@
+---
+import type { Article } from "../../components/movies/dto/Articles";
+
+const endpoint = import.meta.env.API_ART;
+const response = await fetch (endpoint);
+
+const dataJson = await response.json();
+
+const articles: Article[] = dataJson.data as Article[];
+---
+
+<div>
+  <h1> Intento 1 </h1>
+  {
+    articles.map(({ atributes }: Article) => (
+      <div>
+        <h2>{atributes.title}</h2>
+        <p>{atributes.content}</p>
+      </div>
+    ))
+  }
+</div>
+
+<style></style>
